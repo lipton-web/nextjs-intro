@@ -1,26 +1,25 @@
-NextJS는 페이지가 미리 렌더링 되어 정적으로 생성 된다.
-페이지가 next.js를 사용하여 구축된 경우 일부 html을 볼 수 있다.
+NextJS는 페이지가 미리 렌더링 되어 정적으로 생성 된다.  
+페이지가 next.js를 사용하여 구축된 경우 일부 html을 볼 수 있다.  
 리액트로만 만들어진 사이트는 불러오기 전까지 빈 화면.
 SEO 가능
 
 NextJS 설치
-npx create-next-app@latest (최신버전 설치)
-npx create-next-app@latest --typescript (타입스크립트 버전)
+`npx create-next-app@latest` (최신버전 설치)  
+`npx create-next-app@latest --typescript` (타입스크립트 버전)
 
 실행
-npm run dev
+`npm run dev`  
 -> ready - started server on 0.0.0.0:3000, url: http://localhost:3000
 
-pages 폴더 안에 있는 파일명에 따라 route가 결정된다.
-_pages 폴더 안에 index.js가 메인페이지_
-_다른 이름으로 js파일 만들면 파일명이 주소임._
+pages 폴더 안에 있는 파일명에 따라 route가 결정된다.  
+_pages 폴더 안에 index.js가 메인페이지_  
+_다른 이름으로 js파일 만들면 파일명이 주소임._ 
 
-pages/about.js 생성 ->
-localhost:3000/about (O)
+pages/about.js 생성 ->  
+localhost:3000/about (O)  
 localhost:3000/about-us(X)
 
-다만 예외사항으로, index.js의 경우에는
-앱이 시작하는 파일이라고 보면 된다.
+다만 예외사항으로, index.js의 경우에는 앱이 시작하는 파일이라고 보면 된다.  
 즉 localhost:3000 그 자체다 뒤에 /index 로 붙이면 안된다.
 
 js파일 기본 골격은
@@ -33,12 +32,12 @@ export default function _Home(원하는 이름)_ (){
   );
 }
 ```
-import React from "react"를 쓸 필요 없음.
+import React from "react"를 쓸 필요 없음.  
 다만 useState,useEffect, lifecycle method 같은 애들을 써야 할 경우에는 꼭 import를 해줘야 한다.
 
 
-<a href="/">Home</a> a태그는 사용하지 않는것이 좋다. 페이지가 다시 리로딩 되서 불러 옴
-import Link from "next/link" 를 불러 와서 다음과 같은 형식으로 작성 하면 리로딩 되지 않는다.
+`<a href="/">Home</a>` a태그는 사용하지 않는것이 좋다. 페이지가 다시 리로딩 되서 불러 옴  
+`import Link from "next/link"` 를 불러 와서 다음과 같은 형식으로 작성 하면 리로딩 되지 않는다.
 ```jsx
 <Link href="/">
 	<a>Home</a>
@@ -52,11 +51,11 @@ css style 바로 적용
 </Link>
 ```
 
-CSS 파일
-_이름_.module.css 로 css파일 생성
-css 사용법
-일반 css와 동일하게 css파일 내용 작성
-css를 적용시킬 파일에 import styles from "./NavBar.module.css"  -> css를 불러 옴
+CSS 파일  
+`파일명.module.css` 로 css파일 생성  
+css 사용법  
+일반 css와 동일하게 css파일 내용 작성  
+css를 적용시킬 파일에 import styles from "./NavBar.module.css"  -> css를 불러 옴  
 `<nav className={styles.nav}>`(.nav css내용을 적용. 클래스가{styles.nav}이면 html에서 자동으로 다르게 생성됨)
 
 두 개의 css스타일 적용방법
