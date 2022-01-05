@@ -24,6 +24,7 @@ localhost:3000/about-us(X)
 즉 localhost:3000 그 자체다 뒤에 /index 로 붙이면 안된다.
 
 js파일 기본 골격은
+```jsx
 export default function _Home(원하는 이름)_ (){
   return (
     <div>
@@ -31,28 +32,32 @@ export default function _Home(원하는 이름)_ (){
     </div>
   );
 }
-
+```
 import React from "react"를 쓸 필요 없음.
 다만 useState,useEffect, lifecycle method 같은 애들을 써야 할 경우에는 꼭 import를 해줘야 한다.
 
 
 <a href="/">Home</a> a태그는 사용하지 않는것이 좋다. 페이지가 다시 리로딩 되서 불러 옴
 import Link from "next/link" 를 불러 와서 다음과 같은 형식으로 작성 하면 리로딩 되지 않는다.
+```jsx
 <Link href="/">
 	<a>Home</a>
 </Link>
+```
 
 css style 바로 적용
+```jsx
 <Link href="/">
 	<a style={{color: router. pathname === "/" ? "red": "blue"}}>Home</a>
 </Link>
+```
 
 CSS 파일
 _이름_.module.css 로 css파일 생성
 css 사용법
 일반 css와 동일하게 css파일 내용 작성
 css를 적용시킬 파일에 import styles from "./NavBar.module.css"  -> css를 불러 옴
-<nav className={styles.nav}> (.nav css내용을 적용. 클래스가{styles.nav}이면 html에서 자동으로 다르게 생성됨)
+`<nav className={styles.nav}>`(.nav css내용을 적용. 클래스가{styles.nav}이면 html에서 자동으로 다르게 생성됨)
 
 두 개의 css스타일 적용방법
 1. ``으로 감싸기
