@@ -36,7 +36,7 @@ import React from "react"를 쓸 필요 없음.
 다만 useState,useEffect, lifecycle method 같은 애들을 써야 할 경우에는 꼭 import를 해줘야 한다.
 
 
-`<a href="/">Home</a>` a태그는 사용하지 않는것이 좋다. 페이지가 다시 리로딩 되서 불러 옴  
+`<a href="/">Home</a>` a href태그는 사용하지 않는것이 좋다. 페이지가 다시 리로딩 되서 불러 옴  
 `import Link from "next/link"` 를 불러 와서 다음과 같은 형식으로 작성 하면 리로딩 되지 않는다.
 ```jsx
 <Link href="/">
@@ -51,7 +51,7 @@ css style 바로 적용
 </Link>
 ```
 
-CSS 파일  
+# CSS modules  
 `파일명.module.css` 로 css파일 생성  
 css 사용법  
 일반 css와 동일하게 css파일 내용 작성  
@@ -82,7 +82,57 @@ css를 적용시킬 파일에 import styles from "./NavBar.module.css"  -> css�
 </Link>
 ```
 
+# Styles JSX
+styled jsx는 NextJS 고유의 방법
+html class 이름은 자동으로 만들어 (클래스 이름을 만들지 않아도 됨)
+html 태그 이름 그대로 사용
+Styles JSX는 작성된 컴포넌트 내부로 범위가 한정 됨.
+```jsx
+return (
+	// jsx 코드 작성..
+	// Styles JSX 작성법. 기존파일 내에서 바로 작성
+	<style jsx>{`
+		nav {
+			background-color:tomato;
+		}
+		a {
+			text-decoration: none;
+		}
+	`}</style>
+)
+```
 
+```jsx
+	return (
+		<nav>
+			<Link href="/">
+				<a className={router.pathname === "/" ? "active":""}>
+					Home
+				</a>
+			</Link>
+			<Link href="/about">
+				<a className={router.pathname === "/about" ? "active":""}>
+					About
+				</a>
+			</Link>
+			<style jsx>{`
+				nav {
+					background-color:tomato;
+				}
+				a {
+					text-decoration: none;
+				}
+				.active {
+					color: yellow; 
+					// color: ${props.color};도 가능
+				}
+			`}</style>
+		</nav>
+	);
+```
+
+# App Component (Global Style)
+App Component는 일종의 어떤 컴포넌트의 청사진
 
 
 
