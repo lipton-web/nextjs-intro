@@ -1,5 +1,5 @@
 import { useState } from "react";
-import NavBar from "../components/NavBar";
+import Seo from "../components/Seo";
 
 
 export default function Home() {
@@ -7,14 +7,9 @@ export default function Home() {
 
   return (
     <div>
-      <NavBar/>
+      <Seo title="Home"/>
       <h1>hello {counter}</h1>
       <button onClick={() => setCounter((prev) => prev +1)}>+</button>
-      <style jsx global>{`
-        a {
-          color: white;
-        }
-      `}</style>
     </div>
   );
 }

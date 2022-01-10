@@ -2,6 +2,8 @@ NextJS는 페이지가 미리 렌더링 되어 정적으로 생성 된다.
 페이지가 next.js를 사용하여 구축된 경우 일부 html을 볼 수 있다.  
 리액트로만 만들어진 사이트는 불러오기 전까지 빈 화면.
 SEO 가능
+NextJS가 백엔드 상에서 ReactJS를 돌리고 있고 NextJS가 페이지를 사전생성 하고(HTML페이지), 유저가 웹사이트를 들어갈 때 유저는 HTML을 먼저보게 됨  
+유저가 모든 자바스크립트를 다운로드 한 후에, ReactJS가 다시 주도권을 가져와서 모든것이 일반적인 ReactJS처럼 동작
 
 NextJS 설치
 `npx create-next-app@latest` (최신버전 설치)  
@@ -57,6 +59,8 @@ css 사용법
 일반 css와 동일하게 css파일 내용 작성  
 css를 적용시킬 파일에 import styles from "./NavBar.module.css"  -> css를 불러 옴  
 `<nav className={styles.nav}>`(.nav css내용을 적용. 클래스가{styles.nav}이면 html에서 자동으로 다르게 생성됨)
+
+CSS module을 사용하여 다른 컴포넌트에서 같은 클랙스 이름을 사용할 수 있음.(클래스 이름을 무작위화 시킴)
 
 두 개의 css스타일 적용방법
 1. ``으로 감싸기
@@ -132,10 +136,17 @@ return (
 ```
 
 # App Component (Global Style)
-App Component는 일종의 어떤 컴포넌트의 청사진
+App Component는 NextJS가 모든 페이지를 렌더링 할 수 있게 하는 일종의 어떤 컴포넌트의 청사진  
+pages폴더 안에 _app.js파일을 만들어야 함(무조건 해당 이름만 가능)  
+NextJS는 _app.js의 내용을 먼저 확인  
+_app.js에서만 globals.css import 가능함.
+
+# Head
+`import Head from "next/head";`
+웹사이트 창 표시글 변경
 
 
-
+# Next JS
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
