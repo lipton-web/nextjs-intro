@@ -8,9 +8,9 @@ export default function App({Component, pageProps}) {
 			<Component {...pageProps} />
 			<span>hello</span>
 			<style jsx global>{`
-        a {
-          color: white;
-        }
+        // a {
+        //   color: white;
+        // }
       `}</style>
 		</Layout>
 	)

@@ -145,6 +145,52 @@ _app.js에서만 globals.css import 가능함.
 `import Head from "next/head";`
 웹사이트 창 표시글 변경
 
+# Fetching Data
+API Key(v3 auth)
+10923b261ba94d897ac6b81148314a3f
+```jsx
+const [movies, setMovies] = useState([]);
+
+useEffect(() => {
+	(async() => {
+		const {results} = await (
+			await fetch(
+				`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+			)
+		).json();
+		setMovies(results);
+	})();
+}, [])
+```
+
+# Redirect and Rewrite
+next.config.js 파일에서 관리   
+Redirect는 설정된 주소로 들어가면 강제로 주소를 바꾼다.
+```jsx
+async redirects() {
+	return [
+		{
+			// 주소창에 source주소로 들어가면 강제로 destination주소로 바꿈
+			// *는 뒤에 오는 문자 그대로 받음
+			source: "/old-blog/:path*",
+			destination: "/new-blog/:path*",
+			permanent: false,
+		}
+	]
+```
+Rewrite는 강제로 주소를 바꾸지만 사용자에게 바뀐 주소는 보여주지 않는다.  
+api key를 가려줄 떄 유용함
+```jsx
+  async rewrites() {
+    return [
+      {
+        source: "/api/movies",
+        destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+      }
+    ]
+  }
+```
+
 
 # Next JS
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
